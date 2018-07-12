@@ -9,6 +9,7 @@
 <script type="text/javascript" src="/lib/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="/lib/bootstrap/node_modules/angular-ui-bootstrap/dist
 /ui-bootstrap-tpls.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     
     <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -31,9 +32,24 @@
  
 <div ng-controller="newController" layout="column" style="" ng-cloak>
 <md-content>
-  <md-toolbar class="md-hue-2" style="background: blue;">
+  <md-toolbar class="md-hue-2" style="background: #081c51;">
       <div class="md-toolbar-tools" style="font-weight: bold; cursor: pointer;">
-          <span>UNC</span>
+          <span><img src="/images/unc_logo.png" width="50px;" height="auto"/></span>
+          <span style="margin-left: 45px; font-size: 14px;" class="navItem">News</span>
+          <span style="margin-left: 25px; font-size: 14px;" class="navItem">Results</span>
+          <span style="margin-left: 25px; font-size: 14px;" class="navItem">Schedule</span>
+          <span style="margin-left: 25px; font-size: 14px;" class="navItem">Standings</span>
+          <span style="margin-left: 25px; font-size: 14px;" class="navItem">Ninjas</span>
+          <span style="margin-left: 25px; font-size: 14px;" class="navItem">Obstacles</span>
+          <span style="margin-left: 25px; font-size: 14px;" class="navItem">Gyms</span>
+          <span style="margin-left: 25px; font-size: 14px;" class="navItem">Fanzone</span>
+          <span style="margin-left: 25px; font-size: 14px;" class="navItem">Tickets</span>
+          <span layout="row" flex layout-align="end center" style="font-size: 14px; font-weight: bold;">
+              <span  style="font-size: 20px; color: #ffffff; margin-right: 15px;"><i class="fa fa-search"></i></span>
+              <span  style="font-size: 20px; color: #ffffff; margin-right: 15px;"><i class="fa fa-facebook"></i></span>
+              <span  style="font-size: 20px; color: #ffffff; margin-right: 15px;"><i class="fa fa-instagram"></i></span>
+              <span  style="font-size: 20px; color: #ffffff; margin-right: 15px;"><i class="fa fa-twitter"></i></span>
+          </span>
       </div>
     </md-toolbar>
 </md-content>

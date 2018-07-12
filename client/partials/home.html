@@ -1,3 +1,124 @@
-<div>
-    Test this
+<link rel="stylesheet" type="text/css" href="/css/home.css">
+<div class="main">
+    <div layout="row">
+        <div layout="column" flex="25">
+            <div>    
+                <md-card>
+                    <md-card-title style="background-color: #820606; font-weight: bold; color:#ffffff; font-size: 14px; padding-top: 10px; padding-bottom: 10px;">
+                        <div layout="row">
+                            <span>Results</span>
+                        </div>
+                    </md-card-title>
+<!--                    <md-divider style="border-width: 3px; border-color: #081c51;"></md-divider>-->
+                    <md-card-content>
+                        <div layout="row" layout-align="center center" style="margin-bottom: 10px; margin-top: 10px;">
+                            <span style="color: #2b2b2b; font-size: 16px; font-weight: bold;">Week 3 | Ultimate Ninjas</span>
+                        </div>
+                        <md-divider></md-divider>
+                        <div layout="row" style="padding-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #eeeeee;" ng-repeat="item in posArr track by $index">
+                            <span layout="column" layout-align="center center" flex="10" style="font-size: 14px; color: #979797;">{{item.pos}}</span>
+                            <span layout="column" layout-align="center center" flex="20"><img ng-src="{{item.img}}" width="90%" height="auto" /></span>
+                            <span layout="column" layout-align="center start" flex="70" style="font-weight: bold; font-size: 14px; color: #2b2b2b;">{{item.name}}</span>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div>    
+                <md-card>
+                    <md-card-title style="background-color: #820606; font-weight: bold; color:#ffffff; font-size: 14px; padding-top: 10px; padding-bottom: 10px;">
+                        <div layout="row">
+                            <span>Season Standings</span>
+                        </div>
+                    </md-card-title>
+<!--                    <md-divider style="border-width: 3px; border-color: #081c51;"></md-divider>-->
+                    <md-card-content>
+                        <div layout="column" style="padding-top: 10px; padding-bottom: 15px; border-bottom: 1px solid #eeeeee;">
+                                    <div layout="row" flex style="font-weight: bold; color: #979797;">    
+                                        <span layout="column" layout-align="start start" flex="10">Pos</span>
+                                        <span layout="column" layout-align="start start" flex="20"></span>
+                                        <span layout="column" layout-align="start start" flex="60">Name</span>
+                                        <span layout="column" layout-align="start start" flex=10>Pts</span>
+                                    </div>
+                                    <div layout="row" flex ng-repeat="item in standingsArr track by $index" style="padding-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #eeeeee;">
+                                        <span layout="column" layout-align="center center" style="font-size: 14px; color: #979797;" flex="10">{{item.pos}}</span>
+                                        <span layout="column" layout-align="center center" flex="20"><img ng-src="{{item.img}}" width="90%" height="auto" /></span>
+                                        <span layout="column" layout-align="center start" style="font-weight: bold; font-size: 14px; color: #2b2b2b;" flex="60">{{item.name}}</span>
+                                        <span layout="column" layout-align="center center" style="font-size: 14px; color: #2b2b2b;" flex="10">{{item.points}}</span>
+                                    </div>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
+        <div layout="column" flex="75">
+            <div>    
+                <md-card>
+                    <md-card-content>
+                        <div layout="row" flex style="height: 400px; overflow: hidden;">
+                            <img style="width: 100%; overflow: hidden; padding: 0px;" src="/images/swan_dig.jpg"/>
+                        </div>
+                        <div>
+                            <div style="margin-top: 20px; font-size: 26px; font-weight: bold;">Swanson - DiGangi rivalry heating up in week 3</div>
+                            <div style="margin-top: 15px; color: #878787;">Ethan Swanson and Chris DiGangi have battled for the top spot in the first two weeks of the season, but in week 3 a new challenger approaches.</div>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div style="margin-top: 25px;">
+                <div style="margin-left: 15px; font-size: 20px; border-bottom: 1px solid #b6b6b6;">Week 3 Recap</div>
+                <div layout="row">
+                    <div layout="column" flex="33">
+                        <md-card>
+                            <md-card-content>
+                                <div class="imgContainer">
+                                    <img class="image" src="/images/comp_recap.jpg" width="100%" height="auto">
+            <!--                        <div class="overlay">-->
+                                        <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+            <!--                        </div>-->
+                                </div>
+                                <div style="margin-top: 10px; font-size: 16px; font-weight: bold;">Week 3 | Competition Recap</div>
+                            </md-card-content>
+                        </md-card>
+                    </div>
+                    <div layout="column" flex="33">
+                        <md-card>
+                            <md-card-content>
+                                <div class="imgContainer">
+                                    <img class="image" src="/images/gym_pic.jpg" width="100%" height="auto">
+            <!--                        <div class="overlay">-->
+                                        <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+            <!--                        </div>-->
+                                </div>
+                                <div style="margin-top: 10px; font-size: 16px; font-weight: bold;">Week 3 | Obstacle Recap</div>
+                            </md-card-content>
+                        </md-card>
+                    </div>
+                    <div layout="column" flex="33">
+                        <md-card>
+                            <md-card-content>
+                                <div class="imgContainer">
+                                    <img class="image" src="/images/big_moves.jpg" width="100%" height="auto">
+            <!--                        <div class="overlay">-->
+                                        <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+            <!--                        </div>-->
+                                </div>
+                                <div style="margin-top: 10px; font-size: 16px; font-weight: bold;">Week 3 | Biggest Moves</div>
+                            </md-card-content>
+                        </md-card>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 25px;">
+                <div style="margin-left: 15px; font-size: 20px; border-bottom: 1px solid #b6b6b6;">Will be adding more sections like the above here and below</div>
+                <div layout="row">
+                    <div layout="column" flex="33">
+                    </div>
+                    <div layout="column" flex="33">
+                    </div>
+                    <div layout="column" flex="33">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
