@@ -5,14 +5,15 @@
             <div>    
                 <md-card>
                     <md-card-title style="background-color: #820606; font-weight: bold; color:#ffffff; font-size: 14px; padding-top: 10px; padding-bottom: 10px;">
-                        <div layout="row">
-                            <span>Results</span>
+                        <div layout="row" flex>
+                            <span layout="column" flex layout-align="center start">Results</span>
+                            <span layout="column" flex layout-align="center end">Week 3</span>
                         </div>
                     </md-card-title>
 <!--                    <md-divider style="border-width: 3px; border-color: #081c51;"></md-divider>-->
                     <md-card-content>
                         <div layout="row" layout-align="center center" style="margin-bottom: 10px; margin-top: 10px;">
-                            <span style="color: #2b2b2b; font-size: 16px; font-weight: bold;">Week 3 | Apex NorCal</span>
+                            <span style="color: #2b2b2b; font-size: 16px; font-weight: bold;">Apex NorCal</span>
                         </div>
                         <md-divider></md-divider>
                         <div layout="row" style="padding-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #eeeeee;" ng-repeat="item in posArr track by $index">
