@@ -274,3 +274,21 @@
     </div>
     </div>
 </div>
+
+<div style="visibility: hidden">
+<div class="md-dialog-container" id="sessionDialog">
+    <md-dialog aria-label="session">
+        <md-dialog-content>
+          <div class="md-dialog-content">
+            <h2 ng-if="!errCheck" style="color: #979797;">Your session has expired, redirecting to login page!</h2>
+              <div layout="row">
+            <div layout="column" flex="100" layout-align="center center">
+              <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+            </div>
+            </div>
+          </div>
+        </md-dialog-content>
+            
+    </md-dialog>
+</div>
+</div>

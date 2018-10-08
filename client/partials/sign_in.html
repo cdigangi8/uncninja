@@ -1,0 +1,73 @@
+<!--<link rel="stylesheet" type="text/css" href="/css/auth.css">-->
+<div class="container" ng-style="{height: screenHeight + 'px'}">
+    <div style="color: #979797; font-size: 32px; border-bottom: 1px solid #bdbdbd; margin-bottom: 25px;">
+    Please sign in to access the Ultimate Ninja Championship beta site!
+    </div>
+    <div layout="row" style="padding-top: 25px;">
+        <div layout="column" flex="50" layout-align="center center" style="margin-top: -30px;">
+            <img src="/images/unc_logo.png" width="350px" height="auto">
+        </div>
+        <div layout="column" flex="50">
+            
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <div style="font-size: 24px; color: #979797;">Sign In</div>    
+                </md-card-title-text>
+            </md-card-title>
+            <md-divider></md-divider>
+    <md-card-content layout-padding>
+    <form name="projectForm">
+        
+        <md-input-container class="md-block">
+        <label>Username</label>
+        <input required name="username" ng-model="username"/>
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+        
+        <md-input-container class="md-block">
+        <label>Password</label>
+        <input type="password" required name="password" ng-model="password"/>
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+    
+
+      <div>
+        <md-button ng-click="submitBtn()" style="background-color: #18B67F; color: #ffffff;" type="submit">Submit</md-button>
+      </div>
+
+    </form>
+  </md-card-content>
+</md-card>
+            </div>
+</div>
+</div>
+
+
+<div style="visibility: hidden">
+<div class="md-dialog-container" id="loadingDialog">
+    <md-dialog aria-label="loading">
+        <md-dialog-content>
+          <div class="md-dialog-content">
+            <h2 ng-if="!errCheck" style="color: #979797;">Signing in...</h2>
+              <h2 ng-if="errCheck" style="color: #979797;">{{reqStatus}}</h2>
+              
+              <div layout="row">
+            <div ng-if="!errCheck" layout="column" flex="100" layout-align="center center">
+              <md-progress-circular md-diameter="96"></md-progress-circular>
+            </div>
+            <div ng-if="errCheck">
+                {{errMsg}}
+            </div>
+            </div>
+          </div>
+            <md-button ng-show="errCheck" ng-hide="!errCheck" ng-click="closeDialog()">Close</md-button>
+        </md-dialog-content>
+            
+    </md-dialog>
+</div>
+</div>
