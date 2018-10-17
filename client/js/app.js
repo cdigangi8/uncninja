@@ -14,7 +14,7 @@ unc_app = angular.module('unc_app', ['ngRoute', 'ngMaterial'])
         controller: 'gymsCtrl'
       })
         .otherwise({
-        redirectTo: '/partials/sign_in.html'
+        redirectTo: '/sign_in'
       });
   })
 .controller('newController', function($rootScope, $scope, $timeout, $mdSidenav, $location){

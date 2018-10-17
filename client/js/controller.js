@@ -48,6 +48,7 @@ unc_app.controller('homeCtrl', function($rootScope, $scope, homeFactory, $locati
 });
 
 unc_app.controller('signInCtrl', function($rootScope, $scope, $location, $timeout, $mdDialog, $mdSidenav, $log, signInFactory){
+    console.log('test');
     $scope.screenHeight = window.innerHeight - 100;
     $scope.data = {};
     $scope.errMsg = '';
@@ -124,7 +125,52 @@ unc_app.controller('gymsCtrl', function($rootScope, $scope, homeFactory, $locati
         $rootScope.$broadcast('session_active');
     }
     
+    $scope.selectedState = '';
+    $scope.stateArr = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
+    $scope.selectedGyms = [];
+    
+    $scope.gymsArr = [{name: "Movement Lab NJ", address: "710 Park Ave, Hainesport, NJ 08036", state: 'NJ', lat: '39.9801189', lon: '-74.8421448'},
+                  {name: "Vertiquest Gym", address: "1 Easy St, Bound Brook, NJ 08805", state: 'NJ', lat: '39.9801189', lon: '-74.8421448'},
+                  {name: "Pinnacle Parkour Acedmeny, Cherry Hill", address: "1205 Warren Ave, Cherry Hill, NJ 08002", state: 'NJ', lat: '39.9801189', lon: '-74.8421448'},
+                  {name: "Centercourt Club & Sports - Lawrence", address: "1080 Spruce St, Lawrence Township, NJ 08648", state: 'NJ', lat: '39.9801189', lon: '-74.8421448'}];
+    
+    $scope.stateSelection = function(state){
+        $scope.selectedState = state;
+        $scope.selectedGyms = [];
+        for(var i=0; i<$scope.gymsArr.length; i++){
+            if($scope.gymsArr[i].state == state){
+                $scope.selectedGyms.push($scope.gymsArr[i]);
+            }
+        }
+    }
 
+   //d3 expiriment
+    
+
+var svg = d3.select("svg");
+    var width = 960;
+    var height = 600;
+    
+    var projection = d3.geoAlbersUsa();
+
+var path = d3.geoPath();
+
+d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
+  if (error) throw error;
+
+  svg.append("g")
+      .attr("class", "states")
+    .selectAll("path")
+    .data(topojson.feature(us, us.objects.states).features)
+    .enter().append("path")
+      .attr("d", path);
+
+  svg.append("path")
+      .attr("class", "state-borders")
+      .attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; })));
+});
+    
+    //end d3 expiriment
     
     console.log($scope);
 });

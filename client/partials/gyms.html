@@ -1,5 +1,60 @@
+
+<style>
+    .letters{
+        margin-right: 0px;
+    }
+    	.states{
+        fill: #979797;
+		stroke: #a9a9a9;
+		stroke-width: 1;
+	}
+	/* On mouse hover, lighten state color */
+.states :hover {
+  fill: #eeeeee;
+}
+
+.state-borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+</style>
 <div>
-    Search UNC gyms
+    <md-card>
+        <md-card-content>
+            <div id="tooltip"></div><!-- div to hold tooltip. -->
+            <svg preserveAspectRatio="xMidYMid meet" id="statesvg"  width="700" height="500px"></svg> <!-- svg to hold the map. -->
+        </md-card-content>
+    </md-card>
+</div>
+<div>
+    <md-card>
+        <md-card-title>Search Gyms by State</md-card-title>
+        <md-divider></md-divider>
+        <md-card-content>
+            <div layout="row" style="border-bottom: 1px solid #eeeeee; margin-bottom: 15px;" layout-align="center center" flex>
+                <span ng-repeat="state in stateArr track by $index" class="letters" flex><a href="javascript:void(0)" ng-click="stateSelection(state)">{{state}}</a></span>
+            </div>
+            <div style="height: 500px; overflow-y: auto;">
+                <div ng-if="selectedState==''">
+                    Please select a state to view gyms
+                </div>
+                <div ng-if="selectedState != ''" style="font-size: 28px; color: #979797; margin-bottom: 15px;">
+                    State | {{selectedState}}
+                </div>
+                <div ng-if="selectedGyms.length < 1 && selectedState != ''">
+                    No UNC affiliated gyms currently located in this state
+                </div>
+                <div ng-if="selectedGyms.length > 0 && selectedState != ''" ng-repeat="item in selectedGyms track by $index" style="margin-bottom: 10px; border-bottom: 1px solid #eeeeee; padding-bottom: 5px;">
+                    <div style="font-size: 24px; font0-weight: bold;">{{item.name}}</div>
+                    <div style="font-size: 16px;">{{item.address}}</div>
+                </div>
+            </div>
+        </md-card-content>
+    </md-card>
 </div>
 
 <div style="visibility: hidden">
