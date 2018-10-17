@@ -130,9 +130,13 @@ unc_app.controller('gymsCtrl', function($rootScope, $scope, homeFactory, $locati
     $scope.selectedGyms = [];
     
     $scope.gymsArr = [{name: "Movement Lab NJ", address: "710 Park Ave, Hainesport, NJ 08036", state: 'NJ', lat: '39.9801189', lon: '-74.8421448'},
-                  {name: "Vertiquest Gym", address: "1 Easy St, Bound Brook, NJ 08805", state: 'NJ', lat: '39.9801189', lon: '-74.8421448'},
-                  {name: "Pinnacle Parkour Acedmeny, Cherry Hill", address: "1205 Warren Ave, Cherry Hill, NJ 08002", state: 'NJ', lat: '39.9801189', lon: '-74.8421448'},
-                  {name: "Centercourt Club & Sports - Lawrence", address: "1080 Spruce St, Lawrence Township, NJ 08648", state: 'NJ', lat: '39.9801189', lon: '-74.8421448'}];
+                  {name: "Vertiquest Gym", address: "1 Easy St, Bound Brook, NJ 08805", state: 'NJ', lat: '40.5727154', lon: '-74.5632548'},
+                  {name: "Pinnacle Parkour Acedmeny, Cherry Hill", address: "1205 Warren Ave, Cherry Hill, NJ 08002", state: 'NJ', lat: '39.9186971', lon: '-75.0303644'},
+                  {name: "Centercourt Club & Sports - Lawrence", address: "1080 Spruce St, Lawrence Township, NJ 08648", state: 'NJ', lat: '40.2484491', lon: '-74.7564687'},
+                     {name: "Ultimate Ninjas Chicago", address: "2915 W Montrose Ave, Chicago, IL 60618", state: 'IL', lat: '41.960885', lon: '-87.701721'},
+                     {name: "Ultimate Ninjas Naperville", address: "2012 Corporate Ln Ste 120, Naperville, IL 60563", state: 'IL', lat: '41.808653', lon: '-88.1912917'},
+                     {name: "Ultimate Ninjas Libertyville", address: "732 E Park Ave, Libertyville, IL 60048", state: 'IL', lat: '42.2841374', lon: '-87.9464904'},
+                     {name: "Ultimate Ninjas St. Louis", address: "140 Long Road, Suite 130, Chesterfield, MO 63005", state: 'MO', lat: '38.6661931', lon: '-90.6185342'}];
     
     $scope.stateSelection = function(state){
         $scope.selectedState = state;
@@ -148,14 +152,24 @@ unc_app.controller('gymsCtrl', function($rootScope, $scope, homeFactory, $locati
     
 
 var svg = d3.select("svg");
-    var width = 960;
-    var height = 600;
+    var width = 700;
+    var height = 500;
     
-    var projection = d3.geoAlbersUsa();
+// D3 Projection
+var projection = d3.geoAlbersUsa()
+  //.translate([width / 2, height / 2]) // translate to center of screen
+  .scale(1000); // scale things down so see entire US
 
-var path = d3.geoPath();
+// Define path generator
+var path = d3.geoPath() // path generator that will convert GeoJSON to SVG paths
+  .projection(projection); // tell path generator to use albersUsa projection
 
-d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
+    var div = d3.select("#tooltip")
+		    .append("div")   
+    		.attr("class", "tooltip")               
+    		.style("opacity", 0);
+    
+d3.json("https://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(error, us) {
   if (error) throw error;
 
   svg.append("g")
@@ -168,6 +182,33 @@ d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
   svg.append("path")
       .attr("class", "state-borders")
       .attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; })));
+    
+    // add circles to svg
+    
+    svg.selectAll("circle")
+		.data($scope.gymsArr).enter()
+		.append("circle")
+		.attr("cx", function (d) { console.log(projection(d)); return projection([d.lon, d.lat])[0]; })
+		.attr("cy", function (d) { return projection([d.lon,d.lat])[1]; })
+		.attr("r", "4px")
+		.attr("fill", "blue")
+        .attr('opacity', '0.5')
+        .on("mouseover", function(d) {      
+    	div.transition()        
+      	   .duration(200)      
+           .style("opacity", .9);      
+           div.text(d.name)
+           .style("left", (d3.event.pageX+20) + "px")     
+           .style("top", (d3.event.pageY-150) + "px");    
+	})   
+
+    // fade out tooltip on mouse out               
+    .on("mouseout", function(d) {       
+        div.transition()        
+           .duration(500)      
+           .style("opacity", 0);   
+    });
+    
 });
     
     //end d3 expiriment
