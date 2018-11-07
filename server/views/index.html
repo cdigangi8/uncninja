@@ -37,8 +37,9 @@
 <md-content>
   <md-toolbar class="md-hue-2" style="background: #081c51;">
       <div class="md-toolbar-tools" style="font-weight: bold; cursor: pointer;">
-          <span><img src="/images/unc_logo.png" width="50px;" height="auto"/></span>
-          <span ng-if="session == 'active'" style="margin-left: 45px; font-size: 14px;" class="navItem">News</span>
+          <span ng-click="goTo('home')"><img src="/images/unc_logo.png" width="50px;" height="auto"/></span>
+          <span ng-if="session == 'active'" style="margin-left: 45px; font-size: 14px;" class="navItem" ng-click="goTo('content')">NinjaPass</span>
+          <span ng-if="session == 'active'" style="margin-left: 25px; font-size: 14px;" class="navItem">News</span>
           <span ng-if="session == 'active'" style="margin-left: 25px; font-size: 14px;" class="navItem">Results</span>
           <span ng-if="session == 'active'" style="margin-left: 25px; font-size: 14px;" class="navItem">Schedule</span>
           <span ng-if="session == 'active'" style="margin-left: 25px; font-size: 14px;" class="navItem">Standings</span>

@@ -44,6 +44,10 @@ unc_app.controller('homeCtrl', function($rootScope, $scope, homeFactory, $locati
                           {pos: "7.", img: "/images/avatars/tyler_avatar.png", name: "Tyler Yamauchi", points: "9"},
                           {pos: "8.", img: "/images/avatars/grant_avatar.png", name: "Grant McCartney", points: "8"}];
     
+    $scope.goTo = function(_url){
+        $location.url('/' + _url);
+    }
+    
     console.log($scope);
 });
 
@@ -254,4 +258,125 @@ d3.json("https://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(e
     //end d3 expiriment
     
     console.log($scope);
+});
+
+unc_app.controller('contentCtrl', function($rootScope, $scope, contentFactory, $location, $timeout, $mdDialog) {
+    
+    var auth_var = localStorage.getItem('nn_auth_exp');
+    var auth_exp = parseInt(auth_var,10);
+    //console.log(localStorage.getItem('nn_auth_exp'));
+    var authDate = new Date(auth_exp*1000);
+    var nowDate = new Date();
+    var timeDiff = authDate.getTime() - nowDate.getTime();
+    
+    $scope.showSessionDialog = function() {
+    $mdDialog.show({
+      contentElement: '#sessionDialog',
+      parent: angular.element(document.body),
+      clickOutsideToClose: false
+    });
+  };
+    
+    if(auth_var == null || timeDiff<0){
+        $scope.session = 'inactive';
+        //$rootScope.rootSession = 'inactive';
+        $rootScope.$broadcast('session_inactive');
+        $scope.showSessionDialog();
+        $timeout(function(){
+            $location.url('/sign_in');
+        }, 3000);
+    }else{
+        $scope.session = 'active';
+        //$rootScope.rootSession = 'active';
+        $rootScope.$broadcast('session_active');
+    }
+    
+    $scope.upcomingArr = [{title: "Live | Ultimate Ninjas NNL", releaseDate: "August 8, 2018", ninjas: "Labreck, Swanson, Silenzi"},
+                         {title: "Ninja Freestyle | Ep 6", releaseDate: "August 12, 2018", ninjas: "DiGangi, Polizi, Mears"},
+                         {title: "Live | Movement Lab Ohio NNL", releaseDate: "August 14, 2018", ninjas: "Yamauchi, Labreck"},
+                         {title: "Live | Action Athletics NNL", releaseDate: "August 21, 2018", ninjas: "Torres, Swanson"}];
+    
+    $scope.conArr = [{title: "Ninja Freestlye | Ep 1", ninjas: "Swanson, Labreck, McCartney, DiGangi, Silenzi", img: "/images/ninja_freestyle.png", link: "ninja_freestyle"},
+                         {title: "Tips and Tricks | Ep 1", ninjas: "Swanson, Silenzi", img: "/images/tips_and_tricks_3.png", link: "tips_and_tricks"},
+                         {title: "Tips and Tricks | Ep 2", ninjas: "Swanson, Silenzi", img: "/images/tips_and_tricks_2.png", link: "tips_and_tricks"},
+                         {title: "Pineapple Pack | Ep 1", ninjas: "McCartney, Yamauchi", img: "/images/grant_lift_tyler.jpg", link: "pineapple_pack"}];
+    
+    $scope.liveArr = [{title: "Live | Movement Lab NNL", ninjas: "DiGangi, Labreck, Swanson", img: "/images/swanson_pic.jpg", link: "live_replay"},
+                         {title: "Live | Apex NorCal NNL", ninjas: "DiGangi, Labreck, Swanson", img: "/images/swanson_pic.jpg", link: "live_replay"},
+                         {title: "Live | NinjaQuest NNL", ninjas: "DiGangi, Labreck, Swanson", img: "/images/swanson_pic.jpg", link: "live_replay"},
+                         {title: "Live | The Edge NNL", ninjas: "DiGangi, Labreck, Swanson", img: "/images/swanson_pic.jpg", link: "live_replay"}];
+    
+    $scope.freestyleArr = [{title: "Ninja Freestlye | Ep 1", ninjas: "Swanson, Labreck, McCartney, DiGangi, Silenzi", img: "/images/ninja_freestyle.png", link: "ninja_freestyle"},
+                         {title: "Ninja Freestlye | Ep 2", ninjas: "Swanson, Labreck, McCartney, DiGangi, Silenzi", img: "/images/ninja_freestyle.png", link: "ninja_freestyle"},
+                         {title: "Ninja Freestlye | Ep 3", ninjas: "Swanson, Labreck, McCartney, DiGangi, Silenzi", img: "/images/ninja_freestyle.png", link: "ninja_freestyle"},
+                         {title: "Ninja Freestlye | Ep 4", ninjas: "Swanson, Labreck, McCartney, DiGangi, Silenzi", img: "/images/ninja_freestyle.png", link: "ninja_freestyle"}];
+    
+    $scope.tipsArr = [{title: "Tips and Tricks | Ep 1", ninjas: "Swanson, Silenzi", img: "/images/tips_and_tricks_3.png", link: "tips_and_tricks"},
+                         {title: "Tips and Tricks | Ep 2", ninjas: "Swanson, Silenzi", img: "/images/tips_and_tricks_3.png", link: "tips_and_tricks"},
+                         {title: "Tips and Tricks | Ep 3", ninjas: "Swanson, Silenzi", img: "/images/tips_and_tricks_3.png", link: "tips_and_tricks"},
+                         {title: "Tips and Tricks | Ep 4", ninjas: "Swanson, Silenzi", img: "/images/tips_and_tricks_3.png", link: "tips_and_tricks"}];
+    
+     $scope.pineappleArr = [{title: "Pineapple Pack | Ep 1", ninjas: "McCartney, Yamauchi", img: "/images/grant_lift_tyler.jpg", link: "pineapple_pack"},
+                         {title: "Pineapple Pack | Ep 2", ninjas: "McCartney, Yamauchi", img: "/images/grant_lift_tyler.jpg", link: "pineapple_pack"},
+                         {title: "Pineapple Pack | Ep 3", ninjas: "McCartney, Yamauchi", img: "/images/grant_lift_tyler.jpg", link: "pineapple_pack"},
+                         {title: "Pineapple Pack | Ep 4", ninjas: "McCartney, Yamauchi", img: "/images/grant_lift_tyler.jpg", link: "pineapple_pack"}];
+    
+    $scope.goTo = function(_url){
+        $location.url('/' + _url);
+    }
+    
+    $scope.scrollProp = 0;
+    $scope.scrollWidth = $('#channelScroll').width()+150;
+    console.log($scope.scrollWidth);
+    
+    $scope.scrollToRight = function(dir){
+        $scope.scrollWidth = $('#channelScroll').width() +150;
+        console.log($scope.scrollProp);
+        console.log($('#channelScroll').width());
+        var int = 250;
+            for(var s=0; s<=int; s++){
+                if(dir == 'right' && $scope.scrollProp < $scope.scrollWidth){
+                    $scope.scrollProp += 1;
+                }else if(dir == 'left' && $scope.scrollProp > 0){
+                    $scope.scrollProp -= 1;
+                }else{
+                    break;
+                }
+            }
+        $('#channelScroll').animate({scrollLeft: $scope.scrollProp}, 700);
+    }
+    
+    
+    
+    
+$scope.screenHeight = window.innerHeight - 100;
+});
+
+unc_app.controller('videoCtrl', function($rootScope, $scope, $location, $timeout, $mdDialog) {
+    var auth_exp = parseInt(localStorage.getItem('nn_auth_exp'),10);
+    var authDate = new Date(auth_exp*1000);
+    var nowDate = new Date();
+    var timeDiff = authDate.getTime() - nowDate.getTime();
+    
+    $scope.showSessionDialog = function() {
+    $mdDialog.show({
+      contentElement: '#sessionDialog',
+      parent: angular.element(document.body),
+      clickOutsideToClose: false
+    });
+    }
+    
+    if(timeDiff<0){
+        $scope.session = 'inactive';
+        //$rootScope.rootSession = 'inactive';
+        $rootScope.$broadcast('session_inactive');
+        $scope.showSessionDialog();
+        $timeout(function(){
+            $location.url('/sign_in');
+        }, 3000);
+    }else{
+        $scope.session = 'active';
+        //$rootScope.rootSession = 'active';
+        $rootScope.$broadcast('session_active');
+    }
 });

@@ -7,6 +7,14 @@ unc_app.factory('homeFactory', function($http) {
     return _home;
 });
 
+unc_app.factory('contentFactory', function($http) {
+    var _content = {};
+    _content.save = function(params) {
+        return $http.post(params.url, params);
+    };
+    return _content;
+});
+
 unc_app.factory('signInFactory', function($http) {
     var _signIn = {};
     _signIn.save = function(params) {

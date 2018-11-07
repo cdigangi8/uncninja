@@ -13,6 +13,22 @@ unc_app = angular.module('unc_app', ['ngRoute', 'ngMaterial'])
         templateUrl: '/partials/gyms.html',
         controller: 'gymsCtrl'
       })
+    .when('/content', {
+        templateUrl: '/partials/content.html',
+        controller: 'contentCtrl'
+    })
+    .when('/ninja_freestyle', {
+        templateUrl: '/partials/ninja_freestyle.html',
+    })
+    .when('/live_replay', {
+        templateUrl: '/partials/live_replay.html',
+    })
+    .when('/pineapple_pack', {
+        templateUrl: '/partials/pineapple_pack.html',
+    })
+    .when('/tips_and_tricks', {
+        templateUrl: '/partials/tips_and_tricks.html',
+    })
         .otherwise({
         redirectTo: '/sign_in'
       });

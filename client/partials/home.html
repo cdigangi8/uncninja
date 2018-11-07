@@ -1,5 +1,12 @@
 <link rel="stylesheet" type="text/css" href="/css/home.css">
 <div class="main">
+    <div style="margin-bottom: 20px; font-size: 20px; border-bottom: 1px solid #b6b6b6;">Introducing the Ultimate Ninja Championship <i>NinjaPass</i></div>
+    <div layout="row" layout-align="center center" flex="100" style="margin-bottom: 20px;">
+        <video width="1080px" height="610px" controls autoplay muted poster="https://s3.amazonaws.com/ninjanow-thumbnail-images/unc_logo.png">
+            <source src="http://d3f0tscx3wpcc3.cloudfront.net/network_sizzle/network_sizzle.mp4">
+            <source src="http://d3f0tscx3wpcc3.cloudfront.net/network_sizzle/nn_sizzle.m3u8" type="application/x-mpegURL">
+        </video>
+    </div>
     <div layout="row">
         <div layout="column" flex="25">
             <div>    
@@ -53,7 +60,7 @@
             <div layout="row" layout-align="center center" style="margin-top: 15px;">
                <div layout="column" layout-align="center center" id="nn_ad">
                     <div>
-                    <img src="/images/nn_logo_color.png" width="250px" height="auto"/>    
+                    <img src="/images/unc_logo.png" width="200px" height="auto"/>    
                     </div>
                     <div style="color: #ffffff; font-weight: bold; margin-top: 20px; padding-left: 10px; padding-right: 10px; font-size: 24px;">
                         Watch more Ninja!
@@ -62,7 +69,7 @@
                         Catch full UNC replays, ninja training sessions, tips and tricks and much more!
                     </div>
                     <div>
-                        <md-button style="background-color: #2c80c9; color: #ffffff; font-weight:bold; margin-top: 20px;" >Ninja<i>Now</i></md-button>
+                        <md-button style="background-color: #2c80c9; color: #ffffff; font-weight:bold; margin-top: 20px;" ng-click="goTo('content')">Ninja<i>Pass</i></md-button>
                     </div>
                 </div> 
             </div>

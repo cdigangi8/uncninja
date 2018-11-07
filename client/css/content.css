@@ -1,0 +1,275 @@
+    html,
+    body {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    background-color: #dedede;
+    }
+    #mainContainer{
+/*    height: 1000px;*/
+    width: 100%;
+/*        height: auto;*/
+    }
+    #preview{
+/*        background-color: #000000;*/
+        background-size: 100% 100%;
+       position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+/*        height: 400px;*/
+    }
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 14px;
+}
+
+/*
+#channelRow{
+       position: absolute;
+        top: 265px;
+        left: 0px;
+        width: 100%;
+        height: 400px;
+}
+*/
+
+.chanImg{
+    color: #ffffff; font-weight: bold; font-size: 20px; font-family: Verdana; width: 350px; height: 225px;
+}
+#img1{
+    background: linear-gradient(rgba(50, 50, 100, 0.7), rgba(50, 50, 100, 0.4)), url('/images/swanson_pic.jpg');
+    background-size: 100% 100%;
+    width: 100%;
+    height: 225px;
+}
+#img2{
+    background: linear-gradient(rgba(50, 50, 100, 0.7), rgba(50, 50, 100, 0.4)), url('/images/ring.jpg');
+    background-size: 100% 100%;
+    width: 100%;
+    height: 225px;
+}
+#img3{
+    background: linear-gradient(rgba(50, 50, 100, 0.7), rgba(50, 50, 100, 0.4)), url('/images/rope.jpg');
+    background-size: 100% 100%;
+    width: 100%;
+    height: 225px;
+}
+#img4{
+    background: linear-gradient(rgba(50, 50, 100, 0.7), rgba(50, 50, 100, 0.4)), url('/images/grant_and_kids.jpg');
+    background-size: 100% 100%;
+    width: 100%;
+    height: 225px;
+}
+#img5{
+    background: linear-gradient(rgba(50, 50, 100, 0.7), rgba(50, 50, 100, 0.4)), url('/images/un_background.png');
+    background-size: 100% 100%;
+    width: 100%;
+    height: 225px;
+}
+
+.imgContainer {
+  position: relative;
+/*  width: 50%;*/
+}
+
+.image {
+  display: block;
+/*  width: 100%;*/
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 95%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000000;
+}
+
+.chanOverlay{
+    background: linear-gradient(rgba(50, 50, 100, 0.7), rgba(50, 50, 100, 0.4));
+    position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 1;
+}
+
+.chanOverlayHover{
+position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+    background-color: #323264;
+}
+
+
+.chanOverlayHover:hover{
+    opacity: 1;
+}
+
+
+.chanText {
+  color: white;
+  font-size: 26px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+    font-weight: bold;
+}
+
+
+.overlayMain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000000;
+}
+
+.titleOverlay {
+  position: absolute;
+/*  top: 0;*/
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  height: 20%;
+  width: 95%;
+/*  opacity: .5;*/
+/*  background-color: #000000;*/
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+.titleText {
+  color: white;
+  font-size: 26px;
+  position: relative;
+  top: 0%;
+  left: 15px;
+    opacity: 1;
+    color: #eaeaea;
+    font-weight: bold;
+}
+
+.aboutText {
+  color: white;
+  font-size: 16px;
+  position: relative;
+  top: 0%;
+  left: 15px;
+    opacity: 1;
+    color: #979797;
+/*
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+*/
+}
+
+.imgContainer:hover .overlay {
+  opacity: .5;
+    cursor: pointer;
+}
+
+.text {
+  color: white;
+  font-size: 56px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.textSumm {
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+    font-weight: bold;
+}
+
+/*
+.overlaySumm {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000000;
+    background-color: #323264;
+}
+*/
+
+.summContainer:hover {
+  opacity: 1;
+    cursor: pointer;
+}
+
+.summContainer{
+    position: relative;
+}
+
+.showSumm{
+    background-color: #590000;
+    padding-top: 5px;
+    padding-left: 5px;
+    max-width: 250px;
+    min-height: 75px;
+}
+
+.upcoming:hover{
+    background-color: #323232;
+    cursor: pointer;
+}
+.arrowLeft{
+    color: #ffffff;
+    height: 175px;
+    width: 75px !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    position: absolute;
+    z-index: 1000;
+    cursor: pointer;
+}
+.arrowRight{
+    color: #ffffff;
+    height: 178px;
+    width: 75px !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    position: absolute;
+    z-index: 1000;
+    cursor: pointer;
+    right: 0;
+}

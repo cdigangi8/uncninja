@@ -1,0 +1,358 @@
+<link rel="stylesheet" type="text/css" href="/css/content.css">
+<div id="mainContainer" class="container">
+    <div>
+<!--    <div ng-style="{height: screenHeight + 'px'}" style="overflow: auto;">-->
+<!--        <div id="preview">-->
+<!--
+            <div class="row" style="background-color: #000000;">
+                <div class="col-sm-6">
+                        <img class="image" src="/images/ninja_freestyle.png" width="450px" height="auto" ng-click="goTo('ninja_freestyle')">
+                </div>
+                <div class="col-sm-6" style="padding-top: 25px;">
+                    <div style="color: #ffffff; font-size: 36px; font-family: Arial Black;">
+                        New Ninja Freestyle
+                    </div>
+                    <div style="color: #ffffff; width: 500px; margin-top: 10px; font-size: 14px; font-family: Arial Black;">
+                        Catch your favorite ninjas in crazy challenges at gyms all across the country! Ninja freestyle is an inside look at what it's like when ninjas get together to train, but ultimately end up just having fun!
+                    </div>
+                    <div style="color: #0059b3; font-size: 24px; margin-top: 20px; font-family: Arial Black;" ng-click="goTo('ninja_freestyle')">
+                        <span class="glyphicon glyphicon-play-circle"></span>
+                        <span style="cursor: pointer;">View more Ninja Freestyle videos</span>
+                    </div>
+                </div>
+            </div>
+-->
+            <div layout="row" flex>
+                <div layout="column" flex = "70">
+                    <video width="100%" height="auto" controls autoplay muted poster="https://s3.amazonaws.com/ninjanow-thumbnail-images/nn_logo_color.png">
+                        <source src="http://d3f0tscx3wpcc3.cloudfront.net/network_sizzle/network_sizzle.mp4">
+                      <source src="http://d3f0tscx3wpcc3.cloudfront.net/network_sizzle/nn_sizzle.m3u8" type="application/x-mpegURL">
+                    </video>
+                </div>
+                <div layout="column" flex = "30">
+                    <md-card style="height: 450px; background-color: #191919; margin-top: 0px;">
+                        <md-card-content style="overflow-y: auto;">
+                            <div style="font-size: 14px; color: #979797; font-weight: bold;">
+                                Upcoming
+                            </div>
+                            <md-divider style="border-color: #323232;"></md-divider>
+                            <div class="upcoming" ng-repeat="content in upcomingArr track by $index" style="border-bottom: 1px solid #323232; padding-top: 15px; padding-bottom: 15px;">
+                                <div layout="row" flex>
+                                    <div layout="column" flex="20" layout-align="center center">
+                                        <span style="color: #979797; font-size: 20px;"><i class="glyphicon glyphicon-star-empty"></i></span>
+                                    </div>
+                                    <div layout="column" flex="80">
+                                        <div style="color: #979797; font-size: 12px;">
+                                            <span>{{content.releaseDate}}</span>
+                                        </div>
+                                        <div style="color: #eeeeee; font-size: 18px;">
+                                            <span>{{content.title}}</span>
+                                        </div>
+                                        <div style="color: #979797; font-size: 12px;">
+                                            <span>{{content.ninjas}}</span>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        
+        <div style="position: relative;">
+            <div ng-if="scrollProp > 0" class="arrowLeft" ng-click="scrollToRight('left');"><i class="glyphicon glyphicon-chevron-left" style="position: relative; top: 45%; left: 30%; font-size: 28px;"></i></div>
+                <div ng-if="scrollProp < scrollWidth" class="arrowRight" ng-click="scrollToRight('right');"><i class="glyphicon glyphicon-chevron-right" style="position: relative; top: 45%; left: 30%; font-size: 28px;"></i></div>
+            <div id="channelScroll" layout="row" style="width: 100%; margin-top: 15px; overflow-x: hidden;">
+                
+            <div layout="column" style="margin-right: 10px;">
+                <div class="imgContainer">
+                    <img src="/images/swanson_pic.jpg" width="300px" height="175px">
+                    <div class="chanOverlay" ng-click="goTo('live_replay')">
+                            <span class="chanText">Live Replay</span>
+                    </div>
+                    <div class="chanOverlayHover" ng-click="goTo('live_replay')">
+                        <div class="textSumm"><span>Catch up on past Live competitions and events with our Live Replay!</span></div>
+                    </div>
+                </div>
+            </div>
+                
+                <div layout="column" style="margin-right: 10px;">
+                <div class="imgContainer">
+                    <img src='/images/ring.jpg' width="300px" height="175px">
+                    <div class="chanOverlay" ng-click="goTo('ninja_freestyle')">
+                            <span class="chanText">Ninja Freestyle</span>
+                    </div>
+                    <div class="chanOverlayHover" ng-click="goTo('ninja_freestyle')">
+                        <div class="textSumm"><span>See what happens when your favorite ninjas get an entire gym to play around in</span></div>
+                    </div>
+                </div>
+            </div>
+                
+                <div layout="column" style="margin-right: 10px;">
+                <div class="imgContainer">
+                    <img src='/images/rope.jpg' width="300px" height="175px">
+                    <div class="chanOverlay" ng-click="goTo('tips_and_tricks')">
+                            <span class="chanText">Tips and Tricks</span>
+                    </div>
+                    <div class="chanOverlayHover" ng-click="goTo('tips_and_tricks')">
+                        <div class="textSumm"><span>Learn from the pros as they pass on their tips for conquering challenging obstacles</span></div>
+                    </div>
+                </div>
+            </div>
+                
+                <div layout="column" style="margin-right: 10px;">
+                <div class="imgContainer">
+                    <img src='/images/grant_and_kids.jpg' width="300px" height="175px">
+                    <div class="chanOverlay" ng-click="goTo('pineapple_pack')">
+                            <span class="chanText">Pineapple Pack</span>
+                    </div>
+                    <div class="chanOverlayHover" ng-click="goTo('pineapple_pack')">
+                        <div class="textSumm"><span>Follow host Grant McCartney as he takes us one on one with your favorite ninjas</span></div>
+                    </div>
+                </div>
+            </div>
+<!--
+                
+                <div layout="column" style="margin-right: 10px;">
+                <div class="imgContainer">
+                    <img src='/images/un_background.png' width="300px" height="175px">
+                    <div class="chanOverlay" ng-click="goTo('behind_the_buzzer')">
+                            <span class="chanText">Behind the Buzzer</span>
+                    </div>
+                    <div class="chanOverlayHover" ng-click="goTo('behind_the_buzzer')">
+                        <div class="textSumm"><span>See what pro ninjas have to say about their experience on the course with this behind the scenes series</span></div>
+                    </div>
+                </div>
+            </div>
+-->
+                
+<!--
+            <div layout="column" class="chanImg summContainer">
+                <div id="img1" layout="column" layout-align="center center">
+                    <span style="border-bottom: 1px solid #fff;">Live Replay</span>
+                    <div class="overlaySumm" ng-click="goTo('live_replay')">
+                        <div class="textSumm"><span>Catch up on past Live competitions and events with our Live Replay!</span></div>
+                    </div>
+                </div>
+            </div>
+            <div layout="column" class="chanImg summContainer">
+                <div id="img2" layout="column" layout-align="center center">
+                    <span style="border-bottom: 1px solid #fff;">Ninja Freestyle</span>
+                    <div class="overlaySumm" ng-click="goTo('ninja_freestyle')">
+                        <div class="textSumm"><span>See what happens when your favorite ninjas get an entire gym to play around in</span></div>
+                    </div>
+                </div>
+            </div>
+            <div layout="column" class="chanImg summContainer">
+                <div id="img3" layout="column" layout-align="center center">
+                    <span style="border-bottom: 1px solid #fff;">Tips and Tricks</span>
+                    <div class="overlaySumm" ng-click="goTo('tips_and_tricks')">
+                        <div class="textSumm"><span>Learn from the pros as they pass on their tips for conquering challenging obstacles</span></div>
+                    </div>
+                </div>
+            </div>
+            <div layout="column" class="chanImg summContainer">
+                <div id="img4" layout="column" layout-align="center center">
+                    <span style="border-bottom: 1px solid #fff;">Pineapple Pack</span>
+                    <div class="overlaySumm" ng-click="goTo('pineapple_pack')">
+                        <div class="textSumm"><span>Follow host Grant McCartney as he takes us one on one with your favorite ninjas</span></div>
+                    </div>
+                </div>
+            </div>
+            <div layout="column" class="chanImg summContainer">
+                <div id="img5" layout="column" layout-align="center center">
+                    <span style="border-bottom: 1px solid #fff;">Behind the Buzzer</span>
+                    <div class="overlaySumm" ng-click="goTo('behind_the_buzzer')">
+                        <div class="textSumm"><span>See what pro ninjas have to say about their experience on the course with this behind the scenes series</span></div>
+                    </div>
+                </div>
+            </div>
+-->
+                
+                
+                
+        </div>    
+    </div>
+        
+        <div layout="row" flex style="margin-top: 25px;">
+            <div layout="column" flex="50">
+                <div class="imgContainer">
+                        <img class="image" ng-src="{{liveArr[0].img}}" width="95%" height="auto">
+                        <div class="overlay" ng-click="goTo(liveArr[0].link)">
+                            <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+                        </div>
+                        <div class="titleOverlay">
+                            <div class="titleText">{{liveArr[0].title}}</div>
+                            <div class="aboutText">{{liveArr[0].ninjas}}</div>  
+                        </div>
+                    </div>
+            </div>
+            <div layout="column" flex="50">
+                <div class="imgContainer">
+                        <img class="image" ng-src="{{freestyleArr[0].img}}" width="95%" height="auto">
+                        <div class="overlay" ng-click="goTo(freestyleArr[0].link)">
+                            <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+                        </div>
+                        <div class="titleOverlay">
+                            <div class="titleText">{{freestyleArr[0].title}}</div>
+                            <div class="aboutText">{{freestyleArr[0].ninjas}}</div>  
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div layout="row" flex style="margin-top: 25px; margin-bottom: 50px;">
+            <div layout="column" flex="50">
+                <div class="imgContainer">
+                        <img class="image" ng-src="{{tipsArr[0].img}}" width="95%" height="auto">
+                        <div class="overlay" ng-click="goTo(tipsArr[0].link)">
+                            <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+                        </div>
+                        <div class="titleOverlay">
+                            <div class="titleText">{{tipsArr[0].title}}</div>
+                            <div class="aboutText">{{tipsArr[0].ninjas}}</div>  
+                        </div>
+                    </div>
+            </div>
+            <div layout="column" flex="50">
+                <div class="imgContainer">
+                        <img class="image" ng-src="{{pineappleArr[0].img}}" width="95%" height="auto">
+                        <div class="overlay" ng-click="goTo(pineappleArr[0].link)">
+                            <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+                        </div>
+                        <div class="titleOverlay">
+                            <div class="titleText">{{pineappleArr[0].title}}</div>
+                            <div class="aboutText">{{pineappleArr[0].ninjas}}</div>  
+                        </div>
+                    </div>
+            </div>
+        </div>
+        
+<!--
+        <div style=" background-color: #dedede;">
+            <md-card>
+                <md-card-title>
+                    <span style="color: #919191; font-size: 22px;">Continue Watching</span>    
+                </md-card-title>
+                <md-divider></md-divider>
+            <md-card-content>
+            <div layout="row" style="margin-bottom: 30px; width: 100%; overflow-x: auto;">
+                <div layout="column">
+                <div class="imgContainer">
+                    <img class="image" ng-src="/images/swanson_pic.jpg" width="350px" height="255px">
+                    <div class="chanOverlay" ng-click="goTo(content.link)">
+                            <span class="chanText">Live Replay</span>
+                    </div>
+                    <div class="chanOverlayHover" ng-click="goTo('live_replay')">
+                        <div class="textSumm"><span>Catch up on past Live competitions and events with our Live Replay!</span></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+                </md-card-content>
+            </md-card>
+            <md-card>
+                <md-card-title>
+                    <span style="color: #919191; font-size: 22px;">Live Replay</span>
+                </md-card-title>
+                <md-divider></md-divider>
+            <md-card-content>
+            <div layout="row" style="margin-bottom: 30px; width: 100%; overflow-x: auto;">
+                <div layout="column" style="margin-right:25px;" ng-repeat="content in liveArr track by $index">
+                    <div class="imgContainer">
+                        <img class="image" ng-src="{{content.img}}" width="250px" height="auto">
+                        <div class="overlay" ng-click="goTo(content.link)">
+                            <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+                        </div>
+                    </div>
+                    <div style="font-weight: bold; max-width: 255px;">{{content.title}}</div>
+                    <div style="color: #979797; max-width: 255px;">{{content.ninjas}}</div>
+                </div>
+            </div>
+                </md-card-content>
+            </md-card>
+            <md-card>
+                <md-card-title>
+                    <span style="color: #919191; font-size: 22px;">Ninja Freestyle</span>
+                </md-card-title>
+                <md-divider></md-divider>
+            <md-card-content>
+            <div layout="row" style="margin-bottom: 30px; width: 100%; overflow-x: auto;">
+                <div layout="column" style="margin-right:25px;" ng-repeat="content in freestyleArr track by $index">
+                    <div class="imgContainer">
+                        <img class="image" ng-src="{{content.img}}" width="250px" height="auto">
+                        <div class="overlay" ng-click="goTo(content.link)">
+                            <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+                        </div>
+                    </div>
+                    <div style="font-weight: bold; max-width: 255px;">{{content.title}}</div>
+                    <div style="color: #979797; max-width: 255px;">{{content.ninjas}}</div>
+                </div>
+            </div>
+            </md-card-content>
+            </md-card>
+            <md-card>
+                <md-card-title>
+                    <span style="color: #919191; font-size: 22px;">Tips and Tricks</span>
+                </md-card-title>
+                <md-divider></md-divider>
+            <md-card-content>
+            <div layout="row" style="margin-bottom: 30px; width: 100%; overflow-x: auto;">
+                <div layout="column" style="margin-right:25px;" ng-repeat="content in tipsArr track by $index">
+                    <div class="imgContainer">
+                        <img class="image" ng-src="{{content.img}}" width="250px" height="auto">
+                        <div class="overlay" ng-click="goTo(content.link)">
+                            <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+                        </div>
+                    </div>
+                    <div style="font-weight: bold; max-width: 255px;">{{content.title}}</div>
+                    <div style="color: #979797; max-width: 255px;">{{content.ninjas}}</div>
+                </div>
+            </div>
+                </md-card-content>
+            </md-card>
+            <md-card>
+                <md-card-title>
+                    <span style="color: #919191; font-size: 22px;">Pineapple Pack</span>
+                </md-card-title>
+                <md-divider></md-divider>
+            <md-card-content>
+            <div layout="row" style="margin-bottom: 30px; width: 100%; overflow-x: auto;">
+                <div layout="column" style="margin-right:25px;" ng-repeat="content in pineappleArr track by $index">
+                    <div class="imgContainer">
+                        <img class="image" ng-src="{{content.img}}" width="250px" height="auto">
+                        <div class="overlay" ng-click="goTo(content.link)">
+                            <div class="text"><span class="glyphicon glyphicon-play-circle"></span></div>
+                        </div>
+                    </div>
+                    <div style="font-weight: bold; max-width: 255px;">{{content.title}}</div>
+                    <div style="color: #979797; max-width: 255px;">{{content.ninjas}}</div>
+                </div>
+            </div>
+                </md-card-content>
+            </md-card>
+        </div>
+-->
+<!--        </div>-->
+        
+<!--    </div>-->
+        
+    </div>
+</div>
+
+<div style="visibility: hidden">
+<div class="md-dialog-container" id="sessionDialog">
+    <md-dialog aria-label="session">
+        <md-dialog-content>
+          <div class="md-dialog-content">
+            <h2 ng-if="!errCheck" style="color: #979797;">Your session has expired, redirecting to login page!</h2>
+              <div layout="row">
+            <div layout="column" flex="100" layout-align="center center">
+              <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+            </div>
+            </div>
+          </div>
+        </md-dialog-content>
+            
+    </md-dialog>
+</div>
+</div>
