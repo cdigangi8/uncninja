@@ -154,106 +154,106 @@ unc_app.controller('gymsCtrl', function($rootScope, $scope, homeFactory, $locati
 
    //d3 expiriment
     
-
-var svg = d3.select("svg");
-    var width = 700;
-    var height = 500;
-    var centered;
-    
-    svg.append("rect")
-    .attr("class", "background")
-    .attr("width", width)
-    .attr("height", height)
-    .on("click", clicked);
-    
-// D3 Projection
-var projection = d3.geoAlbersUsa()
-  //.translate([width / 2, height / 2]) // translate to center of screen
-  .scale(1000); // scale things down so see entire US
-
-// Define path generator
-var path = d3.geoPath() // path generator that will convert GeoJSON to SVG paths
-  .projection(projection); // tell path generator to use albersUsa projection
-
-    var div = d3.select("#tooltip")
-		    .append("div")   
-    		.attr("class", "tooltip")               
-    		.style("opacity", 0);
-    
-var g = svg.append("g");
-    
-d3.json("https://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(error, us) {
-  if (error) throw error;
-
-  g.append("g")
-    .attr("id", "states")  
-    //.attr("class", "states")
-    .selectAll("path")
-    .data(topojson.feature(us, us.objects.states).features)
-    .enter().append("path")
-      .attr("d", path)
-    .on('click', clicked);
-
-  g.append("path")
-    .attr("id", "state-borders")
-    .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-    .attr('d', path);
-      //.attr("class", "state-borders")
-      //.attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; })));
-    
-    // add circles to svg
-    
-    g.selectAll("circle")
-		.data($scope.gymsArr).enter()
-		.append("circle")
-		.attr("cx", function (d) { console.log(projection(d)); return projection([d.lon, d.lat])[0]; })
-		.attr("cy", function (d) { return projection([d.lon,d.lat])[1]; })
-		.attr("r", "4px")
-		.attr("fill", "blue")
-        .attr('opacity', '0.5')
-        .on("mouseover", function(d) {      
-    	div.transition()        
-      	   .duration(200)      
-           .style("opacity", .9);      
-           div.text(d.name)
-           .style("left", (d3.event.pageX+20) + "px")     
-           .style("top", (d3.event.pageY-150) + "px");    
-	})   
-
-    // fade out tooltip on mouse out               
-    .on("mouseout", function(d) {       
-        div.transition()        
-           .duration(500)      
-           .style("opacity", 0);   
-    });
-    
-});
-    
-    function clicked(d) {
-        console.log('clicked');
-  var x, y, k;
-
-  if (d && centered !== d) {
-    var centroid = path.centroid(d);
-    x = centroid[0];
-    y = centroid[1];
-    k = 3;
-    centered = d;
-  } else {
-    x = width / 2;
-    y = height / 2;
-    k = 1;
-    centered = null;
-  }
-
-  g.selectAll("path")
-      .classed("active", centered && function(d) { return d === centered; });
-
-  g.transition()
-      .duration(750)
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-      .style("stroke-width", 1.5 / k + "px");
-}
+//
+//var svg = d3.select("svg");
+//    var width = 700;
+//    var height = 500;
+//    var centered;
+//    
+//    svg.append("rect")
+//    .attr("class", "background")
+//    .attr("width", width)
+//    .attr("height", height)
+//    .on("click", clicked);
+//    
+//// D3 Projection
+//var projection = d3.geoAlbersUsa()
+//  //.translate([width / 2, height / 2]) // translate to center of screen
+//  .scale(1000); // scale things down so see entire US
+//
+//// Define path generator
+//var path = d3.geoPath() // path generator that will convert GeoJSON to SVG paths
+//  .projection(projection); // tell path generator to use albersUsa projection
+//
+//    var div = d3.select("#tooltip")
+//		    .append("div")   
+//    		.attr("class", "tooltip")               
+//    		.style("opacity", 0);
+//    
+//var g = svg.append("g");
+//    
+//d3.json("https://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(error, us) {
+//  if (error) throw error;
+//
+//  g.append("g")
+//    .attr("id", "states")  
+//    //.attr("class", "states")
+//    .selectAll("path")
+//    .data(topojson.feature(us, us.objects.states).features)
+//    .enter().append("path")
+//      .attr("d", path)
+//    .on('click', clicked);
+//
+//  g.append("path")
+//    .attr("id", "state-borders")
+//    .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+//    .attr('d', path);
+//      //.attr("class", "state-borders")
+//      //.attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; })));
+//    
+//    // add circles to svg
+//    
+//    g.selectAll("circle")
+//		.data($scope.gymsArr).enter()
+//		.append("circle")
+//		.attr("cx", function (d) { console.log(projection(d)); return projection([d.lon, d.lat])[0]; })
+//		.attr("cy", function (d) { return projection([d.lon,d.lat])[1]; })
+//		.attr("r", "4px")
+//		.attr("fill", "blue")
+//        .attr('opacity', '0.5')
+//        .on("mouseover", function(d) {      
+//    	div.transition()        
+//      	   .duration(200)      
+//           .style("opacity", .9);      
+//           div.text(d.name)
+//           .style("left", (d3.event.pageX+20) + "px")     
+//           .style("top", (d3.event.pageY-150) + "px");    
+//	})   
+//
+//    // fade out tooltip on mouse out               
+//    .on("mouseout", function(d) {       
+//        div.transition()        
+//           .duration(500)      
+//           .style("opacity", 0);   
+//    });
+//    
+//});
+//    
+//    function clicked(d) {
+//        console.log('clicked');
+//  var x, y, k;
+//
+//  if (d && centered !== d) {
+//    var centroid = path.centroid(d);
+//    x = centroid[0];
+//    y = centroid[1];
+//    k = 3;
+//    centered = d;
+//  } else {
+//    x = width / 2;
+//    y = height / 2;
+//    k = 1;
+//    centered = null;
+//  }
+//
+//  g.selectAll("path")
+//      .classed("active", centered && function(d) { return d === centered; });
+//
+//  g.transition()
+//      .duration(750)
+//      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+//      .style("stroke-width", 1.5 / k + "px");
+//}
     
     //end d3 expiriment
     

@@ -65,7 +65,7 @@ div.tooltip {
 <div>
     <md-card>
         <md-card-content>
-            <div id="tooltip"></div><!-- div to hold tooltip. -->
+<!--            <div id="tooltip"></div> div to hold tooltip. -->
 <!--            <svg id="statesvg"  width="100%" height="500px"></svg>  svg to hold the map. -->
             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1hRGL5PplFdOgU51R1_mgvoBbr5EqIgcb" width="100%" height="400px;"></iframe>
         </md-card-content>
@@ -76,9 +76,21 @@ div.tooltip {
         <md-card-title>Search Gyms by State</md-card-title>
         <md-divider></md-divider>
         <md-card-content>
+<!--
             <div layout="row" style="border-bottom: 1px solid #eeeeee; margin-bottom: 15px;" layout-align="center center" flex>
                 <span ng-repeat="state in stateArr track by $index" class="letters" flex><a href="javascript:void(0)" ng-click="stateSelection(state)">{{state}}</a></span>
             </div>
+-->
+            <md-input-container style="width: 150px;">
+            <label>State</label>
+            <md-select ng-model="selectedState">
+            <md-option><em>None</em></md-option>
+            <md-option ng-repeat="state in stateArr" ng-click="stateSelection(state)" ng-value="state">
+              {{state}}
+            </md-option>
+          </md-select>
+            </md-input-container>
+            
             <div style="height: 500px; overflow-y: auto;">
                 <div ng-if="selectedState==''">
                     Please select a state to view gyms
